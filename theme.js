@@ -1,6 +1,6 @@
-/* Light/dark toggle. Without this script the site simply follows the
-   visitor's system preference; with it, a header button overrides that
-   and the choice is remembered in localStorage. */
+/* Light/dark toggle. The site is dark by default; a header button
+   switches to the light palette and the choice is remembered in
+   localStorage. Without this script the site is simply dark. */
 (function () {
   var root = document.documentElement;
 
@@ -11,8 +11,7 @@
   }
 
   function current() {
-    if (root.dataset.theme) return root.dataset.theme;
-    return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return root.dataset.theme || "dark"; /* dark is the site's default */
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -36,12 +35,6 @@
       try { localStorage.setItem("theme", next); } catch (e) {}
       updateButton();
     });
-
-    /* keep the icon honest if the system theme changes while in auto */
-    try {
-      matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", updateButton);
-    } catch (e) {}
 
     updateButton();
   });

@@ -2,7 +2,7 @@
 
 Plain HTML and CSS — no build step, no dependencies. The only
 JavaScript is `theme.js` (~1 KB), which powers the light/dark toggle
-(without it the site simply follows the visitor's system preference),
+(the site is dark by default; without the script it is simply dark),
 and `runner.js`, a decorative flourish described below.
 
 ## Files

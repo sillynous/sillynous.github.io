@@ -25,7 +25,40 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
+  /* The dark "jungle at dusk" palette is the site's default face.
+     The toggle (theme.js) switches to the light cream palette below
+     and remembers the choice. */
+  --paper: #161f18;      /* jungle at dusk */
+  --paper-raised: #1f2a21;
+  --ink: #eae5d8;        /* kept cream rather than green — reads as lamplight */
+  --ink-soft: #9ea491;
+  --accent: #72c290;     /* fern glow */
+  --accent-soft: #2c5e42;
+  --rule: #2d3b2f;
+  /* flourish colors (dot, heading stroke, wavy underline, asterism) */
+  --pop: #b6d43a;        /* lime glow */
+  --pop-strong: #b6d43a;
+  /* selected-text color: ordinary ink on the green highlight */
+  --selection-ink: var(--ink);
+  /* the outfield philosopher's paints (sprite injected by runner.js;
+     his laurel uses --accent directly) */
+  --spr-outline: #10150f;
+  --spr-cloth: #f2eede;      /* chiton + ball */
+  --spr-skin: #d19a6b;
+  --spr-beard: #a89e88;
+  --spr-wood: #9c6b3e;       /* glove, sandal soles, torch handle */
+  --spr-fold: #d6d0bc;       /* himation fold line */
+  --spr-flair: var(--pop);   /* meander hem — follows the flourishes */
+  --spr-flame: #f5883a;
+  --spr-flame-core: #ffd45c;
+  --spr-stitch: #c53042;     /* ball stitches (same in both themes) */
+}
+
+/* The light "warm cream" palette, applied only when the visitor flips
+   the toggle (theme.js sets data-theme="light"). */
+:root[data-theme="light"] {
+  color-scheme: light;
   --paper: #faf6ec;        /* warm cream background */
   --paper-raised: #f0ecdc; /* slightly deeper paper, for cards */
   --ink: #26291f;          /* warm near-black text */
@@ -33,78 +66,20 @@
   --accent: #276b4b;       /* rainforest emerald */
   --accent-soft: #8db892;
   --rule: #e2dfc8;         /* hairlines and borders */
-  /* flourish colors (dot, heading stroke, wavy underline, asterism):
-     in light mode they follow the greens; dark mode overrides them */
+  /* in light mode the flourishes follow the greens, not the lime */
   --pop: var(--accent-soft);
   --pop-strong: var(--accent);
-  /* selected-text color: inverted (paper) on the green highlight in
-     light mode; dark mode keeps the ordinary ink so it stays legible */
+  /* selection reads inverted in light mode: paper on green */
   --selection-ink: var(--paper);
-  /* the outfield philosopher's paints (sprite injected by runner.js;
-     his laurel uses --accent directly) */
   --spr-outline: #2b2620;
-  --spr-cloth: #fffdf5;      /* chiton + ball */
+  --spr-cloth: #fffdf5;
   --spr-skin: #e0a877;
   --spr-beard: #c9bea8;
-  --spr-wood: #8a5a33;       /* glove, sandal soles, torch handle */
-  --spr-fold: #e8e1cd;       /* himation fold line */
-  --spr-flair: #f0641e;      /* meander hem — follows the flourishes */
+  --spr-wood: #8a5a33;
+  --spr-fold: #e8e1cd;
+  --spr-flair: #f0641e;    /* orange hem in light mode */
   --spr-flame: #ee7422;
   --spr-flame-core: #f9c440;
-  --spr-stitch: #c53042;     /* ball stitches (same in dark) */
-}
-
-/* The dark palette applies two ways: automatically when the system
-   prefers dark (unless the toggle chose light), and manually when the
-   toggle sets data-theme="dark". Plain CSS can't name and reuse a
-   block, so the two variable lists below must be kept in sync. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #161f18;      /* jungle at dusk */
-    --paper-raised: #1f2a21;
-    --ink: #eae5d8;        /* kept cream rather than green — reads as lamplight */
-    --ink-soft: #9ea491;
-    --accent: #72c290;     /* fern glow */
-    --accent-soft: #2c5e42;
-    --rule: #2d3b2f;
-    --pop: #b6d43a;        /* lime glow, dark mode only */
-    --pop-strong: #b6d43a;
-    --selection-ink: var(--ink);
-    --spr-outline: #10150f;
-    --spr-cloth: #f2eede;
-    --spr-skin: #d19a6b;
-    --spr-beard: #a89e88;
-    --spr-wood: #9c6b3e;
-    --spr-fold: #d6d0bc;
-    --spr-flair: var(--pop);
-    --spr-flame: #f5883a;
-    --spr-flame-core: #ffd45c;
-  }
-}
-
-:root[data-theme="light"] { color-scheme: light; }
-
-:root[data-theme="dark"] {
-  color-scheme: dark;
-  --paper: #161f18;
-  --paper-raised: #1f2a21;
-  --ink: #eae5d8;
-  --ink-soft: #9ea491;
-  --accent: #72c290;
-  --accent-soft: #2c5e42;
-  --rule: #2d3b2f;
-  --pop: #b6d43a;
-  --pop-strong: #b6d43a;
-  --selection-ink: var(--ink);
-  --spr-outline: #10150f;
-  --spr-cloth: #f2eede;
-  --spr-skin: #d19a6b;
-  --spr-beard: #a89e88;
-  --spr-wood: #9c6b3e;
-  --spr-fold: #d6d0bc;
-  --spr-flair: var(--pop);
-  --spr-flame: #f5883a;
-  --spr-flame-core: #ffd45c;
 }
 
 * { box-sizing: border-box; }
