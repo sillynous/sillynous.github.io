@@ -108,9 +108,31 @@ body {
 
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
+/* anchor jumps (e.g. footnote backlinks) land below the sticky header */
+:target { scroll-margin-top: 7rem; }
+
 /* ——— Header & navigation ——— */
 
-.site-header { padding-top: 2.75rem; position: relative; }
+/* The header rides along: it hides while you scroll down to read, and
+   slides back the moment you scroll up (theme.js toggles the classes). */
+.site-header {
+  padding-top: 2.75rem;
+  padding-bottom: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--paper);
+  border-bottom: 1px solid transparent;
+  transition: transform 0.25s ease, padding 0.25s ease,
+              background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.site-header.scrolled {
+  padding-top: 0.9rem;
+  border-bottom-color: var(--rule);
+}
+
+.site-header.header-hidden { transform: translateY(-100%); }
 
 .wordmark {
   font-size: 1.4rem;
@@ -168,8 +190,40 @@ body {
   border-color: var(--accent-soft);
 }
 
+.site-header.scrolled .theme-toggle { top: 0.7rem; }
+
 body, .theme-toggle {
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.25s ease, color 0.25s ease,
+              top 0.25s ease;
+}
+
+/* the back-to-top button (inserted by theme.js on long pages) */
+.to-top {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 45;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--paper-raised);
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease, color 0.25s ease;
+}
+
+.to-top.show { opacity: 1; visibility: visible; }
+
+.to-top:hover {
+  color: var(--pop-strong);
+  border-color: var(--accent-soft);
 }
 
 /* ——— Main content ——— */

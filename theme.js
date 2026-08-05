@@ -37,5 +37,31 @@
     });
 
     updateButton();
+
+    /* — the header hides while you read, returns when you look up — */
+    var lastY = window.scrollY;
+
+    /* — back to top, for long pages — */
+    var toTop = document.createElement("button");
+    toTop.className = "to-top";
+    toTop.textContent = "↑";
+    toTop.setAttribute("aria-label", "Back to top");
+    document.body.appendChild(toTop);
+    toTop.addEventListener("click", function () {
+      var smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+    });
+
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      header.classList.toggle("scrolled", y > 10);
+      if (y > lastY + 4 && y > 160) {
+        header.classList.add("header-hidden");
+      } else if (y < lastY - 2) {
+        header.classList.remove("header-hidden");
+      }
+      toTop.classList.toggle("show", y > 600);
+      lastY = y;
+    }, { passive: true });
   });
 })();

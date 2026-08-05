@@ -15,7 +15,9 @@ and `runner.js`, a decorative flourish described below.
 - `miscellaneous.html` — the personal page
 - `style.css` — all styling; colors are defined in the `:root` block at the top
   (the dark palette appears twice — media query and manual override — keep both in sync)
-- `theme.js` — the light/dark toggle; remembers the choice in localStorage
+- `theme.js` — the light/dark toggle (choice remembered in localStorage),
+  plus the scroll niceties: the header hides while you read and returns
+  when you scroll up, and a back-to-top button appears on long pages
 - `runner.js` — the "outfield philosopher": a pixel-art Greek philosopher who
   chases a fly ball across the bottom of the page, once per visit (clicking
   the green dot in the wordmark replays him; reduced-motion visitors get a
