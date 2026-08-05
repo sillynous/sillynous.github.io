@@ -365,10 +365,26 @@ div.portrait {
   user-select: none;
 }
 
-/* the ornament is the philosopher's pixel baseball */
-.asterism .ball-svg {
+/* the ornament is a baseball (the favicon is its twin) */
+.asterism .footer-ball {
+  display: block;
+  width: 18px;
+  height: 18px;
   margin-inline: auto;
-  width: 14px;
+}
+
+.footer-ball circle {
+  fill: var(--spr-cloth);
+  stroke: var(--spr-outline);
+  stroke-width: 2;
+}
+
+.footer-ball path {
+  fill: none;
+  stroke: var(--spr-stitch);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-dasharray: 2.4 1.9;
 }
 
 blockquote {
