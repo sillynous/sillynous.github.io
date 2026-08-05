@@ -25,7 +25,9 @@ and `runner.js`, a decorative flourish described below.
   this file, its `<script>` line in each page, and the marked section plus
   `--spr-*` variables in `style.css`
 - `fonts/` — self-hosted EB Garamond (regular + italic, ~92 KB total)
-- `favicon.svg` — the browser-tab icon
+- `favicon.svg` — the browser-tab icon (a baseball, matching the footer)
+- `sitemap.xml` / `robots.txt` — for search engines; add new pages to the
+  sitemap when they're created
 
 ## Editing
 
