@@ -28,6 +28,8 @@ and `runner.js`, a decorative flourish described below.
 - `favicon.svg` — the browser-tab icon (a baseball, matching the footer)
 - `sitemap.xml` / `robots.txt` — for search engines; add new pages to the
   sitemap when they're created
+- `404.html` — served automatically for any bad URL (its links are
+  absolute paths for that reason)
 
 ## Editing
 
